@@ -22,7 +22,6 @@ window.addEventListener("resize", () => {
 // my code emad
 const ctx = canvas.getContext("2d");
 
-
 body.style.backgroundColor = "#FFFFFF";
 var theInput = document.getElementById("favcolor");
 
@@ -30,8 +29,8 @@ theInput.addEventListener(
   "input",
   function () {
     theColor = theInput.value;
-    console.log(theColor)
-    if(!!theColor){
+    console.log(theColor);
+    if (!!theColor) {
       ctx.strokeStyle = theColor;
     }
   },
@@ -41,13 +40,18 @@ theInput.addEventListener(
 const img = document.getElementById("canvasImage");
 ctx.drawImage(img, 350, 100, 668, 459);
 
+// (459 * imagwidth) / 668;
+
 if (window.innerWidth < 480) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const img = document.getElementById("canvasImage");
-  const xdis = window.innerWidth - 400;
-  const ydis = window.innerHeight - 274;
-  ctx.drawImage(img, xdis/2, ydis/2, 400, 274);
-  console.log("Hello");
+
+  const xwidth = window.innerWidth - 20;
+  const yheight = (459 * xwidth) / 668;
+  const xdis = (window.innerWidth - xwidth) / 2;
+  const ydis = (window.innerHeight - yheight) / 1.7;
+  ctx.drawImage(img, xdis, ydis, xwidth, yheight);
+  // console.log("Hello");
 }
 
 ctx.lineWidth = lineW;
@@ -65,21 +69,23 @@ clrs = Array.from(clrs);
 // console.log(clrs)
 clrs.forEach((clr) => {
   clr.addEventListener("click", () => {
-    console.log(theColor)
+    console.log(theColor);
     theColor = clr.dataset.clr;
     ctx.strokeStyle = theColor;
-    console.log(theColor)
+    console.log(theColor);
   });
 });
 
 let clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-   const img = document.getElementById("canvasImage");
-   const xdis = window.innerWidth - 400;
-   const ydis = window.innerHeight - 274;
-   ctx.drawImage(img, xdis / 2, ydis / 2, 400, 274);
-   console.log("Hello");
+  const img = document.getElementById("canvasImage");
+  const xwidth = window.innerWidth - 20;
+  const yheight = (459 * xwidth) / 668;
+  const xdis = (window.innerWidth - xwidth) / 2;
+  const ydis = (window.innerHeight - yheight) / 1.7;
+  ctx.drawImage(img, xdis, ydis, xwidth, yheight);
+  // console.log("Hello");
 });
 
 let saveBtn = document.querySelector(".save");
@@ -143,4 +149,3 @@ function handleMove(event) {
 function handleEnd() {
   draw = false;
 }
-
