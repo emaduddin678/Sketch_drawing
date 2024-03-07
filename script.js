@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const body = document.querySelector("body");
-canvas.height = window.innerHeight  ;
-canvas.width = window.innerWidth ;
+// canvas.height = window.innerHeight ;
+// canvas.width = window.innerWidth ;
 var theColor = "";
 var lineW = 5;
 let prevX = null;
@@ -15,7 +15,7 @@ theInput.addEventListener(
   "input",
   function () {
     theColor = theInput.value;
-    body.style.backgroundColor = theColor;
+    // body.style.backgroundColor = theColor;
   },
   false
 );
@@ -35,6 +35,7 @@ clrs = Array.from(clrs);
 clrs.forEach((clr) => {
   clr.addEventListener("click", () => {
     ctx.strokeStyle = clr.dataset.clr;
+    theColor = clr.dataset.clr;
   });
 });
 
@@ -73,3 +74,9 @@ window.addEventListener("mousemove", (e) => {
   prevX = currentX;
   prevY = currentY;
 });
+
+function myFunction(a) {
+  a.style.backgroundColor = theColor;
+  console.log(theColor);
+  console.log(a);
+}
