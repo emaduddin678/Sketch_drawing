@@ -11,41 +11,38 @@
   <body>
     <div class="container">
       <canvas id="canvas"></canvas>
+      <div style="display: none">
+        <img src="./assets/banner.jpeg" id="canvasImage" alt="canvasImage" />
+      </div>
 
       <div class="nav">
-        <div class="clr" data-clr="#000"></div>
-        <div class="clr" data-clr="red"></div>
-        <div class="clr" data-clr="orange"></div>
-        <div class="clr" data-clr="blue"></div>
-        <div class="clr" data-clr="purple"></div>
-        <div class="clr" data-clr="yellowgreen"></div>
-        <div class="clr" data-clr="yellow"></div>
-        <div class="clr" data-clr="#fff"></div>
-        <button class="clear">Clear</button>
-        <button class="save">Save</button>
-        <input type="color" id="favcolor" value="#FFFFFF" />
-        <input
-          type="range"
-          name="ageInputName"
-          id="ageInputId"
-          value="5"
-          min="1"
-          max="10"
-          oninput="ageOutputId.value = ageInputId.value"
-        />
-        <output id="ageOutputId">5</output>
-        <div class="emoji">🎨</div>
+        <div class="navbox">
+          <div class="clr" data-clr="#000"></div>
+          <div class="clr" data-clr="red"></div>
+          <div class="clr" data-clr="orange"></div>
+          <div class="clr" data-clr="blue"></div>
+          <div class="clr" data-clr="purple"></div>
+          <div class="clr" data-clr="yellowgreen"></div>
+          <div class="clr" data-clr="yellow"></div>
+          <div class="clr" data-clr="#fff"></div>
+        </div>
+        <div class="navbox">
+          <button class="clear">Clear</button>
+          <button class="save">Save</button>
+          <input type="color" id="favcolor" value="#FFFFFF" />
+          <input
+            type="range"
+            name="ageInputName"
+            id="ageInputId"
+            value="5"
+            min="1"
+            max="10"
+            oninput="ageOutputId.value = ageInputId.value"
+          />
+          <output id="ageOutputId">5</output>
+          <div class="emoji">🎨</div>
+        </div>
       </div>
-      <svg
-        width="200"
-        height="250"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        onclick="myFunction(this)"
-        style="background-color: #ff0000"
-      >
-        select a color and click this block
-      </svg>
     </div>
   </body>
 </html>

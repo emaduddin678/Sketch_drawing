@@ -4,26 +4,7 @@
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
 }
-.container{
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw; */
-}
-#canvas {
-  background-image: url("./assets/banner.jpeg");
-  
-  /* Full height */
-  /* height: 80%;
-  width: 70%; */
-  margin: auto;
 
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 .nav {
   width: auto;
   height: 50px;
@@ -40,12 +21,7 @@
   border-radius: 10px;
   border: 3px solid white;
 }
-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 .nav div,
 button,
 input {
@@ -54,6 +30,7 @@ input {
 .nav:hover {
   cursor: pointer;
 }
+
 buttton:hover {
   cursor: pointer;
 }
@@ -128,4 +105,60 @@ input[type="color"] {
 .emoji {
   font-size: 40px;
   padding-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    height: 150px;
+    flex-direction: column;
+  }
+  .navbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid white;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav {
+    height: 120px;
+    flex-direction: column;
+    width: 100%;
+    top: 0%;
+    border: none;
+  }
+  .navbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .clr {
+    height: 15px;
+    width: 15px;
+  }
+
+  button {
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+    background-color: #03bb56;
+  }
+
+  input[type="color"] {
+    width: 40px;
+    height: 30px;
+  }
+  #ageOutputId {
+    font-size: 10pt;
+  }
+  #ageInputId {
+    height: 17px;
+    width: 70px;
+  }
+  .emoji {
+    font-size: 20px;
+    padding-bottom: 5px;
+  }
 }

@@ -1,12 +1,27 @@
 const canvas = document.getElementById("canvas");
 const body = document.querySelector("body");
-// canvas.height = window.innerHeight ;
-// canvas.width = window.innerWidth ;
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
 var theColor = "";
 var lineW = 5;
 let prevX = null;
 let prevY = null;
 let draw = false;
+
+// my code emad
+window.addEventListener("resize", () => {
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  console.log(window.innerHeight, window.innerWidth);
+  if (window.innerWidth < 480) {
+    console.log("Hello");
+  }
+});
+// my code emad
+const ctx = canvas.getContext("2d");
+
 
 body.style.backgroundColor = "#FFFFFF";
 var theInput = document.getElementById("favcolor");
@@ -15,12 +30,26 @@ theInput.addEventListener(
   "input",
   function () {
     theColor = theInput.value;
-    // body.style.backgroundColor = theColor;
+    console.log(theColor)
+    if(!!theColor){
+      ctx.strokeStyle = theColor;
+    }
   },
   false
 );
 
-const ctx = canvas.getContext("2d");
+const img = document.getElementById("canvasImage");
+ctx.drawImage(img, 350, 100, 668, 459);
+
+if (window.innerWidth < 480) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const img = document.getElementById("canvasImage");
+  const xdis = window.innerWidth - 400;
+  const ydis = window.innerHeight - 274;
+  ctx.drawImage(img, xdis/2, ydis/2, 400, 274);
+  console.log("Hello");
+}
+
 ctx.lineWidth = lineW;
 
 document.getElementById("ageInputId").oninput = function () {
@@ -31,11 +60,15 @@ document.getElementById("ageInputId").oninput = function () {
 };
 
 let clrs = document.querySelectorAll(".clr");
+// console.log(clrs)
 clrs = Array.from(clrs);
+// console.log(clrs)
 clrs.forEach((clr) => {
   clr.addEventListener("click", () => {
-    ctx.strokeStyle = clr.dataset.clr;
+    console.log(theColor)
     theColor = clr.dataset.clr;
+    ctx.strokeStyle = theColor;
+    console.log(theColor)
   });
 });
 
@@ -74,9 +107,3 @@ window.addEventListener("mousemove", (e) => {
   prevX = currentX;
   prevY = currentY;
 });
-
-function myFunction(a) {
-  a.style.backgroundColor = theColor;
-  console.log(theColor);
-  console.log(a);
-}
