@@ -75,6 +75,11 @@ clrs.forEach((clr) => {
 let clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+   const img = document.getElementById("canvasImage");
+   const xdis = window.innerWidth - 400;
+   const ydis = window.innerHeight - 274;
+   ctx.drawImage(img, xdis / 2, ydis / 2, 400, 274);
+   console.log("Hello");
 });
 
 let saveBtn = document.querySelector(".save");
@@ -107,3 +112,35 @@ window.addEventListener("mousemove", (e) => {
   prevX = currentX;
   prevY = currentY;
 });
+
+window.addEventListener("touchstart", handleStart, { passive: false });
+window.addEventListener("touchmove", handleMove, { passive: false });
+window.addEventListener("touchend", handleEnd, { passive: false });
+
+function handleStart(event) {
+  draw = true;
+  let touches = event.touches[0];
+  prevX = touches.clientX;
+  prevY = touches.clientY;
+}
+
+function handleMove(event) {
+  event.preventDefault(); // Prevent scrolling
+  if (!draw) return;
+  let touches = event.touches[0];
+  let currentX = touches.clientX;
+  let currentY = touches.clientY;
+
+  ctx.beginPath();
+  ctx.moveTo(prevX, prevY);
+  ctx.lineTo(currentX, currentY);
+  ctx.stroke();
+
+  prevX = currentX;
+  prevY = currentY;
+}
+
+function handleEnd() {
+  draw = false;
+}
+
